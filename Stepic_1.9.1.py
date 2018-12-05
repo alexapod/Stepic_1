@@ -11,3 +11,5 @@ a and b or not a and not b
 """
 
 ((a and b) or ((not a) and (not b)))
+
+#That's all
