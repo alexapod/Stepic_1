@@ -12,8 +12,8 @@ Sample Output:
 14 23 22 21 8
 13 12 11 10 9
 
-n = int(input())
 
+n = int(input())
 # Создаем нулевую квадратную матрицу заданной размерности
 a = [[0 for i in range(n)] for j in range(n)]
 
@@ -51,28 +51,16 @@ while x <= n * n:
 	x += 1  # Ну, и не забываем прибавлять единичку в конце цикла, какое бы условие ни сработало.
 
 # Выводим на печать
-for i in a: print(*i)
+for i in a:
+	print(*i)
 
 """
 
 n = int(input())
-a = [[0 for i in range(n)] for j in range(n)]
-i = 0
-j = 0
-x = 1
-k = 0
-while x <= n * n:
-	a[i][j] = x
-	if i != j:
-		a[j][i] = (a[k][k] + (n - k * 2) * 2) * 2 - 4 - x
-	if j != n - k - 1:
-		j += 1
-	elif i != n - k - 1:
-		i += 1
-	elif x != n * n:
-		k += 1
-		i = j = k
-		x = a[k][k - 1]
-	x += 1
-for i in a:
-	print(*i)
+x, y, b, a, t = 0, 0, 0, 1, [[0] * n for i in range(n)]
+for i in range(n * n):
+	t[x][y] = i + 1
+	if t[(x + b) % n][(y + a) % n] != 0:
+		b, a = a, -b
+	x, y = x + b, y + a
+[print(*i) for i in t]
